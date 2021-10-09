@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<!--<div id="app">-->
+<!--  {{message}}-->
+
+<!--  {{name}}-->
+<!--</div>-->
+<!--{{meal}}-->
+//<script>
+//  const obj = {
+//      message: '哈哈',
+//      name: 'code'
+//  }
+//
+//
+//  Object.keys(obj).forEach(key => {
+//    let value = obj[key]
+//    Object.defineProperty(obj, key, {
+//      set(newValue) {
+//        console.log('监听'+ key + '改变');
+//        value = newValue
+//
+//      },
+//      get() {
+//        console.log('获取' + key + '对应的值');
+//        return value
+//      }
+//    })
+//  })
+
+
+
+
+// version1
+const handler = {
+  get(target, key, receiver) {
+    console.log(target);
+    console.log('get', key)
+    return Reflect.get(target, key, receiver)
+  },
+  set(target, key, value, receiver) {
+    console.log('set', key, value)
+    let res = Reflect.set(target, key, value, receiver)
+    return res
+  },
+  deleteProperty(target, key) {
+    console.log('deleteProperty', key)
+    Reflect.deleteProperty(target, key)
+  }
+}
+// 测试部分
+let obj = {
+  name: 'hello',
+  info: {
+    age: 20
+    }
+}
+const proxy = new Proxy(obj, handler)
+// get name hello
+// hello
+console.log(proxy.name)
+// set name world
+proxy.name = 'world'
+// deleteProperty name
+delete proxy.name
+proxy.height = 20
+
+
+</script>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+  // const app = new Vue({
+  //   el: '#app',
+  //   data: {
+  //     message: '哈哈',
+  //     name: 'code'
+  //   }
+  // })
+
+
+</script>
+</body>
+</html>
