@@ -1,5 +1,5 @@
 <template>
-  <div class="shop-info">
+  <div class="shop-info" >
     <div class="shop-top">
       <img :src="shop.logo" alt="">
       <div class="title">{{shop.name}}</div>

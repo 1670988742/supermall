@@ -50,7 +50,12 @@ export default {
       //后续利用vuex加入收藏列表
       // console.log(this.isCollectionShow);
       this.$emit('addToCollect')
-      this.$toast.show('收藏成功', 1000)
+      if((this.$store.state.collectList.some(item => item.iid === this.id))){
+        this.$toast.show('收藏成功', 1000)
+      }else{
+        this.$toast.show('取消收藏成功', 1000)
+      }
+
     },
     addToCart() {
       this.$emit('addToCart')

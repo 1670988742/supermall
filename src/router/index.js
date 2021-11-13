@@ -101,30 +101,30 @@ const router  = new VueRouter({
   //配置路由和组建之间的映射关系
   routes,
   mode: 'history',
-  linkActiveClass: 'active',
+  linkActiveClass: 'active', //活跃显示的class
 
 })
 
-router.beforeEach((to, from, next) => {
-  document.title = to.matched[0].meta.title
-  if (to.meta.requireAuth) {     // 判断该路由是否需要登录权限
-    let token = localStorage.getItem('token')
-    if (token) {              // 通过localStorage.getItem()获取当前的 token 是否存在
-      next()
-    }
-    else {
-      next({
-        path: '/login',
-        // query: {
-        //   redirect: to.fullPath    // 将跳转的路由path作为参数，登录成功后跳转到该路由
-        // }
-      })
-    }
-  }
-  else {
-    next()
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   document.title = to.matched[0].meta.title
+//   if (to.meta.requireAuth) {     // 判断该路由是否需要登录权限
+//     let token = localStorage.getItem('token')
+//     if (token) {              // 通过localStorage.getItem()获取当前的 token 是否存在
+//       next()
+//     }
+//     else {
+//       next({
+//         path: '/login',
+//         // query: {
+//         //   redirect: to.fullPath    // 将跳转的路由path作为参数，登录成功后跳转到该路由
+//         // }
+//       })
+//     }
+//   }
+//   else {
+//     next()
+//   }
+// })
 
 
 export default router

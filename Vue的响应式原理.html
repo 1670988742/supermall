@@ -38,39 +38,43 @@
 
 
 // version1
-const handler = {
-  get(target, key, receiver) {
-    console.log(target);
-    console.log('get', key)
-    return Reflect.get(target, key, receiver)
-  },
-  set(target, key, value, receiver) {
-    console.log('set', key, value)
-    let res = Reflect.set(target, key, value, receiver)
-    return res
-  },
-  deleteProperty(target, key) {
-    console.log('deleteProperty', key)
-    Reflect.deleteProperty(target, key)
-  }
-}
-// 测试部分
-let obj = {
-  name: 'hello',
-  info: {
-    age: 20
-    }
-}
-const proxy = new Proxy(obj, handler)
-// get name hello
-// hello
-console.log(proxy.name)
-// set name world
-proxy.name = 'world'
-// deleteProperty name
-delete proxy.name
-proxy.height = 20
+// const handler = {
+//   get(target, key, receiver) {
+//     console.log(target);
+//     console.log('get', key)
+//     return Reflect.get(target, key, receiver)
+//   },
+//   set(target, key, value, receiver) {
+//     console.log('set', key, value)
+//     let res = Reflect.set(target, key, value, receiver)
+//     return res
+//   },
+//   deleteProperty(target, key) {
+//     console.log('deleteProperty', key)
+//     Reflect.deleteProperty(target, key)
+//   }
+// }
+// // 测试部分
+// let obj = {
+//   name: 'hello',
+//   info: {
+//     age: 20
+//     }
+// }
+// const proxy = new Proxy(obj, handler)
+// // get name hello
+// // hello
+// console.log(proxy.name)
+// // set name world
+// proxy.name = 'world'
+// // deleteProperty name
+// delete proxy.name
+// proxy.height = 20
 
+
+var arr = [1,2,3]
+arr.splice(0,1,4)
+console.log(arr);
 
 </script>
 <script src="./node_modules/vue/dist/vue.js"></script>

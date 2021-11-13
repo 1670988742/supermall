@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div class="check-out">
     <check-button class="check-all" :ischeck="isAllSelect" @click.native="allSelect"></check-button>
     <span>全选</span>
@@ -55,6 +55,7 @@ export default {
   methods: {
     allSelect() {
       if(this.isAllSelect) {
+
         this.cartList.forEach(item => item.check = false)
         // for (let item of this.cartList) {
         //     item.check = false

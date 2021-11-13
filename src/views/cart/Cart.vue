@@ -59,7 +59,7 @@ export default {
   height: 100vh;
 }
 .nav-bar {
-  background-color: #002FA7;
+  background-color: #89a4ea;
   color: #fff;
 }
 .content {

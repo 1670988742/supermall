@@ -1,9 +1,9 @@
 <template>
   <div class="item">
-    <div><img :src="imglist" alt="">
-      <img :src="showimg" alt="" class="img">
-    </div>
-    <div>{{title}}</div>
+
+      <img :src="item.image" alt="" class="img">
+
+    <div>{{item.title}}</div>
   </div>
 </template>
 
@@ -11,51 +11,23 @@
 export default {
   name: "RecommendItem",
   props: {
-    // imglist: {
-    //   type: Array,
-    //   default() {
-    //     return []
-    //   }
-    //
-    // },
-    imglist: String,
-    title: String,
-    imgurl: {},
-    index: Number
-
-  },
-  computed: {
-    // showtitle() {
-    //   return this.recommenditem.cat_name
-    // },
-    showimg() {
-      return this.imgurl.children[this.index].cat_icon
-      // return this.imgURL[0].cat_icon
-    }
+    item: {},
   }
+
 }
 </script>
 
 <style scoped>
   .item {
-    /*padding-bottom: 40px;*/
-    /*position: relative;*/
-    /*width: 45%;*/
-    /*height: 25vh;*/
-    /*text-align: center;*/
-
-    /*display: inline-block;*/
-    /*vertical-align: top;*/
-    /*font-size: 16px;*/
-    /*width: 25%;*/
-
     display: inline-block;
-    width: 33.3%;
+    width: 26%;
     text-align: center;
-
+    margin: 16px 5px;
+    font-size: 12px;
   }
   .img {
-    height: 100px;
-    width: 100px;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 5px;
   }
 </style>

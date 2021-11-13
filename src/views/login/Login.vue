@@ -46,8 +46,8 @@ export default {
     },
     login() {
       if(this.username === "123" && this.password === "123"){
-        axios.get('http://localhost:8080/user.json').then(res => {
-          // console.log(res);
+        axios.get('http://localhost:82/user.json').then(res => {
+          console.log(res);
           localStorage.setItem('token', res.data.token)
             this.$store.state.user.username = res.data.username
             this.$store.state.user.userLevel = res.data.userLevel

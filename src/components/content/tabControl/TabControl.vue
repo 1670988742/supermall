@@ -42,7 +42,7 @@ export default {
     text-align: center;
     line-height: 40px;
     background-color: #fff;
-    z-index: 9;
+    /*z-index: 9;*/
   }
   .tab-control-item {
     flex: 1;

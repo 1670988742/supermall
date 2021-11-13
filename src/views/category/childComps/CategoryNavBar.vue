@@ -17,7 +17,7 @@ export default {
 
 <style scoped>
   .categoryNavBar {
-    background-color: #002FA7;
+    background-color: #89a4ea;
     color: white;
   }
 </style>

@@ -2,7 +2,7 @@
   <div class="categoryList">
     <category-list-item v-for="(item, index) in list"
                         :key="index"
-                        :listitem="item.cat_name"
+                        :listitem="item.title"
                         @click.native="listitemClick(index)"
                         :class="{active: index === currentIndex}"
     >
@@ -49,7 +49,7 @@ export default {
     /*top: 44px;*/
   }
   .active {
-    color: var(--color-high-text);
+    color: #002FA7;
     background-color: white;
     /*border-left: solid red 1px;*/
    }

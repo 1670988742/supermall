@@ -20,7 +20,8 @@
   import Scroll from "../../components/common/scroll/Scroll";
   import Recommend from "./childComps/Recommend";
 
-  import axios from "axios";
+
+  import {getCategory, getCategoryList} from "../../network/category";
 
 
   export default {
@@ -30,6 +31,7 @@
         currentIndex: 0,
         // response: {},
         categories: [],
+        itemKey: 3627,
         recommendlist: []
       }
     },
@@ -40,47 +42,37 @@
     Recommend
   },
   created() {
-    this.getinfo()
+    this.getCategory()
+
+    this.getCategoryList()
+
   },
-  // computed: {
-  //   showgoods() {
-  //     return this.res.message
-  //   }
-  // },
+
   methods: {
     listClick(index) {
       this.currentIndex = index
-      // this.getlistinfo(index)
-      this.recommendlist = this.categories[this.currentIndex].children
-      console.log(this.currentIndex);
+      this.itemKey = this.categories[this.currentIndex].maitKey
+      this.getCategoryList();
       console.log(this.recommendlist);
     },
-    getinfo() {
-      axios.get('https://api-hmugo-web.itheima.net/api/public/v1/categories').then(res => {
-        // console.log(res);
-        this.categories = res.data.message
-        this.recommendlist = this.categories[this.currentIndex].children
-        // this.response = res
-        console.log(this.recommendlist);
-        // console.log(this.categories[this.currentIndex]);
+    //获取分类列表
+    getCategory() {
+      getCategory().then(res => {
+        console.log(res.data.category.list);
+        this.categories = res.data.category.list
 
+        // console.log(this.itemKey);
       })
     },
-    // getlistinfo(index) {
-    //   axios.get('https://api-hmugo-web.itheima.net/api/public/v1/categories').then(res => {
-    //     console.log(res);
-    //     this.recommendlist = res.data.message[index].children
-    //     console.log(this.recommendlist);
-    //   })
-    // }
+    //获取分类下的数据
+    getCategoryList() {
+      getCategoryList(this.itemKey).then(res => {
+        this.recommendlist = res.data.list
+        console.log(this.recommendlist);
+      })
+    }
+  }
 
-
-
-  },
-    // activated() {
-    //   this.$refs.scroll.refresh()
-    //   // console.log('活跃时刷新content高度');
-    // }
 }
 
 </script>
@@ -101,7 +93,7 @@
   .recommend {
     width: 80%;
     position: absolute;
-    top: 44px;
+    top: 0px;
     bottom: 49px;
     right: 0;
     overflow: hidden;
